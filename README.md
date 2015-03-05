@@ -1,6 +1,6 @@
 ## Synopsis
 
-The CRUD Todo App demonstrating how to user Firebase with Angular.
+The CRUD Todo App demonstrating how to use Firebase with Angular.
 
 
 The program is originally based on a Node Todo Tutorial on [scotch.io](http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular). 
