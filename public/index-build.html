@@ -1,0 +1,100 @@
+<!--===========================================================================
+Michael Cullen 
+Todo CRUD
+index.html
+
+2015
+Working - (Tá se ag obair)
+============================================================================-->
+
+<!DOCTYPE html>
+
+<html lang="en" ng-app="fireApp">
+
+<head>
+    <base href="./">
+    <meta charset="utf-8">
+    <title>Firebase Todo App</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/lib.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+</head>
+
+<body ng-controller = "MainCtrl"> 
+    <div class="container">
+        <section id = "secTodoApp">
+            <div>
+                <!-- Page header -->
+                <div class="jumbotron text-center">
+                    <h1>CRUD Application <span class="label label-info" 
+                        ng-bind="todos.length"></span>
+                    </h1>
+                    <p>Create Read Update Delete</p>
+                </div>
+
+                <!-- List of Todo's -->
+                <div id="todo-list" class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <!-- Loop through todos in $scope.todos -->
+                        <div class="checkbox" ng-cloak 
+                            ng-repeat="(id, todo) in todos track by $index">
+                            <button class="btn-xs" ng-click="deleteTodo(id)">X
+                            </button>
+                            [{{$index}}]
+                            <input type="checkbox" ng-model="todo.done">
+                            <input type="text" name="ibTodo" 
+                                ng-model="todo.text" ng-bind="todo.text" 
+                                ng-class="{'doneClass': todo.done, 
+                                    'notDoneClass': !todo.done }"> 
+                            <button class="btn btn-primary btn-xs" 
+                                ng-click="editTodo(id, todo.text, todo.done)">
+                                Update</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Form to create Todo -->
+					<div id="todo-form" class="row">
+						<div class="col-sm-8 col-sm-offset-2 text-center">
+							
+							<form name="fmCreateTodo" novalidate>
+								
+								<div class="form-group">
+									<input type="text" 
+									    class="form-control input-lg 
+									    text-center" 
+									    placeholder="Enter Stuff.." 
+									    ng-model="formData.text" 
+									    ng-required="true">
+								</div>
+
+								<!-- 
+								Form will be invalid unless the input box has
+								content only then will the Button become active
+								-->
+								<button type="submit" 
+								    class="btn btn-primary btn-lg" 
+								    ng-disabled="fmCreateTodo.$invalid" 
+									ng-click="createTodo()">Create
+								</button>
+							</form> <!-- @END/ form -->
+
+						</div> <!-- @END/ .col -->
+					</div>
+				</div>
+			</section>
+
+	    <!-- Footer -->
+		<div class="text-center text-muted">
+			<p>CRUD Firebase Example</p>
+		</div>
+
+	</div> <!-- @END/ .container -->
+
+	<!-- JS -->
+	<script src="js/bundled.min.js"></script>
+	<script src="js/app.min.js"></script>
+
+
+</body>
+</html>
