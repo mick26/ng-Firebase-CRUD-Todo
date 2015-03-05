@@ -9,11 +9,6 @@ Client side packages are installed with npm & listed in package.json
 The packages required by the browser are listed in main.js
 bowserify creates bundled 
 
-use a build task to compile the JS and copy it to the /build 
-where it will be minified, uglified, and copied to /public 
-to be served by the backend.
-
-
 
 Ref.
 https://blog.engineyard.com/2015/client-side-javascript-project-gulp-and-browserify
