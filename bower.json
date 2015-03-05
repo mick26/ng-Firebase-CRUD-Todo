@@ -20,6 +20,7 @@
   "devDependencies": {
     "angularfire": "1.0.0",
     "angular": "1.3.14",
-    "firebase": "2.2.2"
+    "firebase": "2.2.2",
+    "angular-mocks": "~1.3.14"
   }
 }
