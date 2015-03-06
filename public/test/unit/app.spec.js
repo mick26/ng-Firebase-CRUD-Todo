@@ -36,7 +36,7 @@ describe("Main App module: fireApp", function () {
 /**
  * Test if Controllers Module fireApp.controllers Exists
  */
-describe("Controllers module: fireApp.controllers", function () {
+describe("fireApp.controllers Module", function () {
     
     var controllersModule;
     beforeEach(function () {
@@ -53,7 +53,7 @@ describe("Controllers module: fireApp.controllers", function () {
 /**
  * Test if Services Module fireApp.services Exists
  */
-describe("Services module: fireApp.services", function () {
+describe("fireApp.services Module", function () {
     
     var emailServicesModule;
     beforeEach(function () {
@@ -65,3 +65,18 @@ describe("Services module: fireApp.services", function () {
     });
 });
 
+
+/**
+ * Test if Services Module fireApp.services Exists
+ */
+describe("'fireApp.URI' Module", function () {
+    
+    var uriModule;
+    beforeEach(function () {
+        uriModule = angular.module('fireApp.URI');
+    });
+
+    it("should exist", function () {
+        expect(uriModule).toBeDefined();
+    });
+});

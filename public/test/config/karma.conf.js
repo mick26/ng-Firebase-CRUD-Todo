@@ -4,6 +4,8 @@ Karma configuration
 Ref.
 https://github.com/angular/angular-seed/blob/master/karma.conf.js
 https://github.com/karma-runner/karma-phantomjs-launcher
+https://github.com/firebase/angularfire-seed/blob/master/test/lib/jasmineMatchers.js
+http://jasmine.github.io/2.2/introduction.html
 ============================================================================ */
 
 module.exports = function(config) {
@@ -21,8 +23,13 @@ module.exports = function(config) {
     files: [
         'lib/angular/angular.js',
         'lib/angular-mocks/angular-mocks.js',
+        'lib/angularfire/dist/angularfire.js',
+        'lib/mockfirebase/browser/mockfirebase.js',
         'src/js/**/*.js',
-        'test/unit/app.spec.js'
+        'test/unit/app.spec.js',
+        'test/unit/services/firebaseURI.spec.js',
+        'test/unit/controllers/controllers1.spec.js',
+        'test/unit/lib/mock.firebase.js'
     ],
 
 

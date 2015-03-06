@@ -6,7 +6,7 @@ Ref.
 https://www.firebase.com/tutorial/#session/dpmkxhfbtvg
 You should replace it with your own URI
 ============================================================================ */
-angular.module('fireApp.services').
+angular.module('fireApp.URI').
 
 constant('FIREBASE_URI', 'https://dpmkxhfbtvg.firebaseio-demo.com/');
 
