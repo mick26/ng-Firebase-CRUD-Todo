@@ -9,6 +9,11 @@ Client side packages are installed with npm & listed in package.json
 The packages required by the browser are listed in main.js
 bowserify creates bundled 
 
+use a build task to compile the JS and copy it to the /build 
+where it will be minified, uglified, and copied to /public 
+to be served by the backend.
+
+
 
 Ref.
 https://blog.engineyard.com/2015/client-side-javascript-project-gulp-and-browserify
@@ -30,6 +35,7 @@ var karma      = require('karma').server;
 var minifyCSS  = require('gulp-minify-css');
 var ngAnnotate = require('gulp-ng-annotate');
 var plumber    = require('gulp-plumber'); //pipe error will not break gulp
+var protractor = require("gulp-protractor").protractor;
 var rename     = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var stripDebug = require('gulp-strip-debug');
@@ -46,7 +52,8 @@ var BASES = {
     SRC: 'public/src/',
     BUILD: 'public/build/',
     ROOT: './',
-    PUBLIC: 'public/'
+    PUBLIC: 'public/',
+    TEST:'public/test/',
 };
 
 /* ============================================================================
@@ -241,9 +248,9 @@ gulp.task('browserify', function () {
 });
 
 
-/* ==========================================================
-GULP TASKS - Unit Testing with Karma
-========================================================== */
+/* ============================================================================
+UNIT Testing with Karma
+============================================================================ */
 //Run test once and exit
 gulp.task('unit:test', function (done) {
     karma.start({
@@ -258,6 +265,28 @@ gulp.task('unit:tdd', function (done) {
     karma.start({
         configFile: __dirname + '/public/test/config/karma.conf.js'
     }, done);
+});
+
+
+
+
+/* ============================================================================
+E2E Testing with Protractor
+============================================================================ */
+//gulp.src(["./src/tests/*.js"])
+//gulp.src(["./src/tests/*.js"])
+
+gulp.task('e2e', function () {
+
+    //gulp.src(__dirname + '/public/test/e2e/checkTitle-spec.js')
+    gulp.src('public/test/e2e/*.spec.js')
+
+    .pipe(protractor({
+        configFile: __dirname + '/public/test/config/protractor.conf.js'
+        //,
+        //args: ['--baseUrl', 'http://127.0.0.1:8000']
+    })) 
+    .on('error', function(e) { throw e })
 });
 
 

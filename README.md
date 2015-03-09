@@ -23,6 +23,11 @@ Other repositories contain Todo Apps demonstrating the following storage solutio
 - [Bower](http://bower.io/)
 - [Gulp](https://github.com/gulpjs/gulp)
 - [Browserify](http://browserify.org/) - lets you use NPM module on the client
+- [Karma](http://karma-runner.github.io/0.8/plus/AngularJS.html)
+- [Jasmine](http://jasmine.github.io/2.2/introduction.html)
+- [Selenium Webdriver](https://www.npmjs.com/package/selenium-manager)
+- [Protractor](https://github.com/angular/protractor)
+
 
 
 Note: I used Bower instead of Browserify to install Bootstrap as it contained a css file. Bootstrap is the only production library installed by Bower.  I have however installed all the libraries needed to run this app as development dependencies with Bower purely for development.  All the production libraries except Bootstrap are made available in a single minified file (bundled.min.js) thanks to Browserify and a few Gulp modules.  For development I have included _index-dev.html_ which does not use concatenated/minified files or Browserify.
@@ -47,14 +52,53 @@ Note: I used Bower instead of Browserify to install Bootstrap as it contained a 
 * inside /build - Click on index-build.html
 
 
-## Screen Shot
+## Unit Testing
+
+Two gulp tasks have been set up that run unit tests using Karma and Jasmine.  The default browser I have set up is the phantomJS headless browser.
+
+- gulp unit:test - just runs the tests once
+- gulp unit:tdd - runs the tests and automatically runs the tests when code changes occur. Note you can run this task and then browse to localhost:9876 and hit the debug button and you will see a GUI containing the test results.
 
 <div align="center">
-    <img width="95%" src="screenshot/firebase-todo.png" alt="Firebase Todos" title="Firebase Todos"</img>
+    <img width="60%" src="screen-shots/unit-test-results.png" alt="Karma Jasmine Test Results" 
+    title="Karma Jasmine Test Results"></img>
+</div>
+
+<div align="center">
+    <img width="60%" src="screen-shots/unit-tests-console.png" alt="Karma Jasmine Test Results" 
+    title="Karma Jasmine Test Results"></img>
 </div>
 
 <hr>
 
+
+## End-to-End Testing
+
+A gulp task have been set up that will run end-to-end tests using [Protractor](https://github.com/angular/protractor),  [Selenium-Webdriver](https://code.google.com/p/selenium/wiki/WebDriverJs) and [Jasmine](http://jasmine.github.io/2.2/introduction.html).  Selenium-Webdriver needs to be started before the gulp e2e task can be run.  I set up a node server to make the App available on port 8000 purely to aid running Protractor tests.
+
+
+Open a console window and run the node server:  
+<pre>node server</pre>
+
+Install selenium-manager globally:
+<pre>npm install -g selenium-manager</pre>
+
+Open a new console window and start the Selenium-manager:
+<pre>selenium-manager start</pre>
+
+Open a new console wondow and run the Protractor tests:
+<pre>gulp e2e</pre>
+
+<hr>
+
+## Screen Shot
+
+
+<div align="center">
+    <img width="95%" src="screen-shots/firebase-todo.png" alt="Firebase Todos" title="Firebase Todos"></img>
+</div>
+
+<hr/>
 
 
 <div align="center">

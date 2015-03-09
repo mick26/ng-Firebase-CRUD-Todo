@@ -28,7 +28,7 @@ module.exports = function(config) {
         'src/js/**/*.js',
         'test/unit/app.spec.js',
         'test/unit/services/firebaseURI.spec.js',
-        'test/unit/controllers/controllers1.spec.js',
+        'test/unit/controllers/controllers3spies.spec.js',
         'test/unit/lib/mock.firebase.js'
     ],
 
