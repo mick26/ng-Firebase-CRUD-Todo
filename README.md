@@ -83,8 +83,8 @@ Open a console window and run the node server:
 Install selenium-manager globally:
 <pre>npm install -g selenium-manager</pre>
 
-Open a new console window and start the Selenium-manager:
-<pre>selenium-manager start</pre>
+Open a new console window and start Selenium Webdriver:
+<pre>webdriver-manager start</pre>
 
 Open a new console wondow and run the Protractor tests:
 <pre>gulp e2e</pre>
