@@ -20,14 +20,14 @@ Working - (Tá se ag obair)
     <link rel="stylesheet" href="css/app.min.css">
 </head>
 
-<body ng-controller = "MainCtrl"> 
+<body ng-controller = "MainCtrl as main"> 
     <div class="container">
         <section id = "secTodoApp">
             <div>
                 <!-- Page header -->
                 <div class="jumbotron text-center">
                     <h1>CRUD Application <span class="label label-info" 
-                        ng-bind="todos.length"></span>
+                        ng-bind="main.todos.length"></span>
                     </h1>
                     <p>Create Read Update Delete</p>
                 </div>
@@ -37,17 +37,17 @@ Working - (Tá se ag obair)
                     <div class="col-sm-4 col-sm-offset-4">
                         <!-- Loop through todos in $scope.todos -->
                         <div class="checkbox" ng-cloak 
-                            ng-repeat="(id, todo) in todos track by $index">
-                            <button class="btn-xs" ng-click="deleteTodo(id)">X
+                            ng-repeat="(id, todo) in main.todos track by $index">
+                            <button class="btn-xs" ng-click="main.deleteTodo(id)">X
                             </button>
                             [{{$index}}]
                             <input type="checkbox" ng-model="todo.done">
                             <input type="text" name="ibTodo" 
-                                ng-model="todo.text" ng-bind="todo.text" 
+                                ng-model="todo.text" ng-bind="main.todo.text" 
                                 ng-class="{'doneClass': todo.done, 
                                     'notDoneClass': !todo.done }"> 
                             <button class="btn btn-primary btn-xs" 
-                                ng-click="editTodo(id, todo.text, todo.done)">
+                                ng-click="main.editTodo(id, todo.text, todo.done)">
                                 Update</button>
 							</div>
 						</div>
@@ -64,7 +64,7 @@ Working - (Tá se ag obair)
 									    class="form-control input-lg 
 									    text-center" 
 									    placeholder="Enter Stuff.." 
-									    ng-model="formData.text" 
+									    ng-model="main.formData.text" 
 									    ng-required="true">
 								</div>
 
@@ -75,7 +75,7 @@ Working - (Tá se ag obair)
 								<button type="submit" 
 								    class="btn btn-primary btn-lg" 
 								    ng-disabled="fmCreateTodo.$invalid" 
-									ng-click="createTodo()">Create
+									ng-click="main.createTodo()">Create
 								</button>
 							</form> <!-- @END/ form -->
 

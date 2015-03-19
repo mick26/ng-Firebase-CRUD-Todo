@@ -9,30 +9,33 @@ angular.module('fireApp.controllers').
 /**
  * Controller - MainCtrl
  */
-controller('MainCtrl', function($scope, $q, TodoService) {
-	$scope.formData = {};
-	$scope.todos={};
-	$scope.newTodo = {"text":"", "done": false};
+controller('MainCtrl', function($q, TodoService) {
+	
+	var main = this;
+
+	main.formData = {};
+	main.todos = {};
+	main.newTodo = {"text":"", "done": false};
 
 	/*
 	 * Get Todos
 	 */
-	$scope.todos = TodoService.getTodos();
+	main.todos = TodoService.getTodos();
 	/*
 	 * Create a New Todo
 	 */
-	$scope.createTodo = function() {
-		$scope.newTodo = {
-			"text":angular.copy($scope.formData.text), 
+	main.createTodo = function() {
+		main.newTodo = {
+			"text":angular.copy(main.formData.text), 
 		    "done": false
 		};
-		TodoService.createTodo($scope.newTodo);
+		TodoService.createTodo(main.newTodo);
 	};
 
 	/*
 	 * Update a Todo
 	 */
-	$scope.editTodo = function(id, txt, isDone) {
+	main.editTodo = function(id, txt, isDone) {
 		var updateData = {"text":txt, "done": isDone};
 		TodoService.updateTodo(id, updateData);
 	};
@@ -41,7 +44,7 @@ controller('MainCtrl', function($scope, $q, TodoService) {
 	/*
 	 * Delete a Todo
 	 */
-	$scope.deleteTodo = function(id) {
+	main.deleteTodo = function(id) {
 	    console.log("Delete ID = "+id); //TEST
 	    TodoService.deleteTodo(id);
 	};
